@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Styles">
+    <File Path="Scripts\fb-scripts.js" Url="Scripts/fb-scripts.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

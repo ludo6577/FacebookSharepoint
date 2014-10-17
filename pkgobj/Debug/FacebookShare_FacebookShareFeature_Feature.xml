@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="FacebookShareFeature" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Version="1.0.0.0">
+  <ElementManifests>
+    <ElementFile Location="DeploymentScripts\App.js" />
+    <ElementFile Location="DeploymentScripts\COB_AppHelper.js" />
+    <ElementFile Location="DeploymentScripts\FileProvisioning.js" />
+    <ElementFile Location="DeploymentScripts\_references.js" />
+    <ElementManifest Location="DeploymentScripts\Elements.xml" />
+    <ElementFile Location="Files\MasterPageProvisionedByApp.txt" />
+    <ElementManifest Location="Files\Elements.xml" />
+    <ElementFile Location="Files\fb-config.txt" />
+    <ElementFile Location="Images\AppIcon.png" />
+    <ElementManifest Location="Images\Elements.xml" />
+    <ElementFile Location="Images\fb-img.png" />
+    <ElementFile Location="Pages\ClientWebPart.aspx" />
+    <ElementFile Location="Pages\FileProvisioning.aspx" />
+    <ElementManifest Location="Pages\Elements.xml" />
+    <ElementFile Location="Pages\fb-share.html" />
+    <ElementFile Location="Pages\fb-shareButton.html" />
+    <ElementManifest Location="Scripts\Elements.xml" />
+    <ElementFile Location="Scripts\fb-scripts.js" />
+    <ElementFile Location="Styles\App.css" />
+    <ElementManifest Location="Styles\Elements.xml" />
+    <ElementFile Location="Styles\fb-styles.css" />
+    <ElementManifest Location="Elements.xml" />
+  </ElementManifests>
+  <UpgradeActions>
+    <VersionRange>
+      <ApplyElementManifests>
+        <ElementManifest Location="DeploymentScripts\Elements.xml" />
+        <ElementManifest Location="Files\Elements.xml" />
+        <ElementManifest Location="Images\Elements.xml" />
+        <ElementManifest Location="Pages\Elements.xml" />
+        <ElementManifest Location="Scripts\Elements.xml" />
+        <ElementManifest Location="Styles\Elements.xml" />
+        <ElementManifest Location="Elements.xml" />
+      </ApplyElementManifests>
+    </VersionRange>
+  </UpgradeActions>
+</Feature>

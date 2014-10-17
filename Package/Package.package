@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="3310fd2f-f830-4bff-be39-53e19d973334" solutionId="3310fd2f-f830-4bff-be39-53e19d973334" resetWebServer="false" sharePointProductVersion="15.0" name="FacebookShare2" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="8e12558d-a5c4-4be7-ad0d-476ec847225d" />
+  </features>
+</package>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Files">
+    <File Path="Files\MasterPageProvisionedByApp.txt" Url="Files/MasterPageProvisionedByApp.txt" ReplaceContent="TRUE" />
+    <File Path="Files\fb-config.txt" Url="Files/fb-config.txt" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

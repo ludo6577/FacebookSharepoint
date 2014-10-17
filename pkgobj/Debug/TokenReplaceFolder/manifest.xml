@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="3310fd2f-f830-4bff-be39-53e19d973334" SharePointProductVersion="15.0">
+  <FeatureManifests>
+    <FeatureManifest Location="FacebookShare_FacebookShareFeature\Feature.xml" />
+  </FeatureManifests>
+</Solution>

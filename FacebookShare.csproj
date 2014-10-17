@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6BB0FCC7-6A8B-4900-9DE6-06944C52F6C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FacebookShare2</RootNamespace>
+    <AssemblyName>FacebookShare2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{f78258b0-97f3-40c2-a950-102af394866b}</AppFeaturePartId>
+    <WspPartId>{5a8af0b6-3e7f-4610-b33c-44b00ec2f5ad}</WspPartId>
+    <CspkgPartId>{df9745bd-d66f-4718-b52d-456220828af9}</CspkgPartId>
+    <SqlPackagePartId>{0e3c2463-048c-4bea-b326-8cbd3a039610}</SqlPackagePartId>
+    <ActiveDeploymentConfiguration>Deploy App for SharePoint</ActiveDeploymentConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Features\FacebookShareFeature\FacebookShareFeature.feature">
+      <FeatureId>{8e12558d-a5c4-4be7-ad0d-476ec847225d}</FeatureId>
+    </None>
+    <None Include="Scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a0fbd7b8-6c86-4674-82f2-9fe18d1e2a11}</SharePointProjectItemId>
+    </None>
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{dba165e3-2f2c-4818-b590-504cba62fdbe}</SharePointProjectItemId>
+    </None>
+    <None Include="Styles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d63b973a-8508-4ec3-88db-2d54da933d52}</SharePointProjectItemId>
+    </None>
+    <None Include="Files\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{56a61828-7373-4e71-be7e-76615fad01ef}</SharePointProjectItemId>
+    </None>
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f0403a95-0866-44b5-b469-481d543cfb9b}</SharePointProjectItemId>
+    </None>
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2f8ff06d-76a8-4199-a7fd-8a092d62898e}</SharePointProjectItemId>
+    </None>
+    <None Include="DeploymentScripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3a598d2c-7ce4-49f2-92ce-d4101a2d272f}</SharePointProjectItemId>
+    </None>
+    <Content Include="Elements.xml" />
+    <Content Include="Features\FacebookShareFeature\FacebookShareFeature.Template.xml">
+      <DependentUpon>FacebookShareFeature.feature</DependentUpon>
+    </Content>
+    <Content Include="Pages\fb-share.html" />
+    <Content Include="Pages\fb-shareButton.html" />
+    <Content Include="Scripts\Elements.xml" />
+    <Content Include="Styles\Elements.xml" />
+    <Content Include="Files\fb-config.txt" />
+    <Content Include="Files\Elements.xml" />
+    <Content Include="Images\Elements.xml" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="DeploymentScripts\Elements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\App.css" />
+    <Content Include="Images\fb-img.png" />
+    <Content Include="Scripts\fb-scripts.js" />
+    <Content Include="Styles\fb-styles.css" />
+    <Content Include="Files\MasterPageProvisionedByApp.txt" />
+    <Content Include="Images\AppIcon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+    <Content Include="Pages\ClientWebPart.aspx" />
+    <Content Include="Pages\FileProvisioning.aspx" />
+    <Content Include="DeploymentScripts\App.js" />
+    <Content Include="DeploymentScripts\COB_AppHelper.js" />
+    <Content Include="DeploymentScripts\FileProvisioning.js" />
+    <Content Include="DeploymentScripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{3310fd2f-f830-4bff-be39-53e19d973334}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>
