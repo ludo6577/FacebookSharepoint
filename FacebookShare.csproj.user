@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SharePointSiteUrl>https://ludovicfeltz.sharepoint.com/</SharePointSiteUrl>
+    <SharePointSiteUrl>https://ludovicfeltz.sharepoint.com/blog3/</SharePointSiteUrl>
     <OfficeAppStartAction>
     </OfficeAppStartAction>
   </PropertyGroup>
@@ -9,8 +9,8 @@
     <VisualStudio>
       <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
         <ProjectStore>
-          <AppInstancePackageModifiedTime>2014-10-16T13:20:31.2140253Z</AppInstancePackageModifiedTime>
-          <AppInstanceId>b5e07121-13f9-45ee-8241-2b5557236649</AppInstanceId>
+          <AppInstancePackageModifiedTime>2014-10-20T10:19:32.4600147Z</AppInstancePackageModifiedTime>
+          <AppInstanceId>c83753e3-72b7-4af3-bccf-90060edfc361</AppInstanceId>
         </ProjectStore>
       </FlavorProperties>
     </VisualStudio>

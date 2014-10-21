@@ -7,8 +7,8 @@
     <ProjectGuid>{6BB0FCC7-6A8B-4900-9DE6-06944C52F6C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FacebookShare2</RootNamespace>
-    <AssemblyName>FacebookShare2</AssemblyName>
+    <RootNamespace>FacebookShare</RootNamespace>
+    <AssemblyName>FacebookShare</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetOfficeVersion>15.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
@@ -69,6 +69,7 @@
     <Content Include="Features\FacebookShareFeature\FacebookShareFeature.Template.xml">
       <DependentUpon>FacebookShareFeature.feature</DependentUpon>
     </Content>
+    <Content Include="Files\fb-masterScript.txt" />
     <Content Include="Pages\fb-share.html" />
     <Content Include="Pages\fb-shareButton.html" />
     <Content Include="Scripts\Elements.xml" />
@@ -84,7 +85,7 @@
     <Content Include="Images\fb-img.png" />
     <Content Include="Scripts\fb-scripts.js" />
     <Content Include="Styles\fb-styles.css" />
-    <Content Include="Files\MasterPageProvisionedByApp.txt" />
+    <Content Include="Files\fb-masterPage.txt" />
     <Content Include="Images\AppIcon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>

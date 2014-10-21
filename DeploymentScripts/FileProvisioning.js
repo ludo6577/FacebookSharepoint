@@ -63,7 +63,7 @@ window.COB.HostWebApp = function() {
 		        $('#message').append('<br />File provisioned in host web successfully: ' + hostWebServerRelativeUrl + '/' + hostWebFileName);
 
 				if(isMasterPage && !errorOccured)
-					setMaster('/' + hostWebServerRelativeUrl + '/' + hostWebFileName);
+					setMaster(hostWebServerRelativeUrl + '/' + hostWebFileName);
 		   }, 
 		   function onProvisionFileFail(sender, args) {
 				errorOccured = true;
@@ -101,8 +101,9 @@ window.COB.HostWebApp = function() {
 	 * TODO: modifier le master et pas le remplacer
 	 */
     function setMaster(masterUrl) {
-		var hostWeb = hostWebContext.get_web();
-        hostWeb.set_masterUrl(masterUrl);
+        var hostWeb = hostWebContext.get_web();
+        var relativeURL = window.COB.AppHelper.getRelativeUrlFromAbsolute(hostWebUrl);
+        hostWeb.set_masterUrl(relativeURL + masterUrl);
         hostWeb.update();
 
         hostWebContext.load(hostWeb);
@@ -121,7 +122,8 @@ window.COB.HostWebApp = function() {
         execute: function () {
             init();
             //createConfigFile(appWebUrl + '/Files', 'fb-config.txt');
-			readFromAppWebAndProvisionToHost(appWebUrl + '/Files/MasterPageProvisionedByApp.txt', '_catalogs/masterpage', 'ProvisionedByApp.master', true);        
+            readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterScript.txt', '_catalogs/masterpage', 'fb-masterScript.js');
+            readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterPage.txt', '_catalogs/masterpage', 'fb-masterPage.master', true);
         }
     }
 }();

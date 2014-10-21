@@ -1,1 +1,1 @@
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookShare2\FacebookShare2\bin\Debug\app.publish\1.0.0.0\FacebookShare.app
+C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\bin\Debug\app.publish\1.0.0.2\FacebookShare.app

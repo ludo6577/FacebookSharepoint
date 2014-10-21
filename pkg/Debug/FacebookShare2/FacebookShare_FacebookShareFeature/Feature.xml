@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="FacebookShareFeature" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Version="1.0.0.0">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Title="FacebookShareFeature" Version="1.0.0.2">
   <ElementManifests>
     <ElementFile Location="DeploymentScripts\App.js" />
     <ElementFile Location="DeploymentScripts\COB_AppHelper.js" />
     <ElementFile Location="DeploymentScripts\FileProvisioning.js" />
     <ElementFile Location="DeploymentScripts\_references.js" />
     <ElementManifest Location="DeploymentScripts\Elements.xml" />
-    <ElementFile Location="Files\MasterPageProvisionedByApp.txt" />
+    <ElementFile Location="Files\fb-masterPage.txt" />
     <ElementManifest Location="Files\Elements.xml" />
     <ElementFile Location="Files\fb-config.txt" />
+    <ElementFile Location="Files\fb-masterScript.txt" />
     <ElementFile Location="Images\AppIcon.png" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\fb-img.png" />

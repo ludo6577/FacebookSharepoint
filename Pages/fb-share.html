@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Share on Facebook</title>
-    <link rel="stylesheet" href="/FacebookShare/Styles/fb-styles.css">
+    <link rel="stylesheet" href="../Styles/fb-styles.css">
 </head>
 
 <body>
     <!-- Facebook scripts -->
     <div id="fb-root"></div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-    <script src="/FacebookShare/Scripts/fb-scripts.js"></script>
+    <script src="../Scripts/fb-scripts.js"></script>
 
     <script>
         var sharedTextContent;
@@ -33,6 +33,7 @@
 		    //FBLOAD
 		    $(document).on('fbload',
                 function () {
+                    document.getElementById("selectPage").innerHTML = "";
                     FB.api("/me", processResponse);
                     FB.api("/me/accounts", processResponse);
                 }
@@ -55,12 +56,12 @@
 		        alert(JSON.stringify(response.error));
 		    } else {
 		        $("#ShareButton").show();
-		        if (response instanceof Array) {
+		        if (response.data instanceof Array) {
 		            for (var item in response.data) {
 		                addSelectorOption(response.data[item]);
 		            }
 		        } else {
-		            addSelectorOption(response);
+		            addSelectorOption(response, 0);
 		        }		        
 		    }
 		}
@@ -68,11 +69,11 @@
 		/*
          *  Add an option to the selector list: "page to share on" 
          */
-		function addSelectorOption(value) {
+		function addSelectorOption(value, position) {
 		    var option = document.createElement("option");
 		    option.value = value.id;
 		    option.text = value.name;
-		    document.getElementById("selectPage").add(option);
+		    document.getElementById("selectPage").add(option, position);
 		}
 
 
@@ -131,8 +132,7 @@
                 <tbody>
                     <tr class="_51mx">
                         <td class="_51m-">
-                            <i id="fbLogo" class="_3lu0 img sp_itTrYuXwPEW sx_c404ff"></i>
-                            <script>$("#fbLogo").css("background-image", "url('" + APP_IMAGES + "fb-img.png');")</script>
+                            <img src="../Images/fb-img.png" class="_3lu0 img sp_itTrYuXwPEW sx_c404ff"></img>
                         </td>
                         <td class="_51m- _51mw">
                             <span class="_zpn fcw">Partager sur Facebook</span>

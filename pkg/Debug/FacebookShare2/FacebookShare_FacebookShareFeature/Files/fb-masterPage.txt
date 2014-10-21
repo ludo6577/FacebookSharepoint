@@ -30,9 +30,8 @@
 	<SharePoint:CustomJSUrl runat="server" />
 	
 	<!-- NEEDED TO SHARE ON FACEBOOK -->
-	<script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
 	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="/FacebookShare/Scripts/fb-scripts.js"></script>
+	<script type="text/javascript" src="_catalogs/masterpage/fb-masterScript.js"></script>
 	
 	<SharePoint:SoapDiscoveryLink runat="server" />
 	<SharePoint:AjaxDelta id="DeltaPlaceHolderAdditionalPageHead" Container="false" runat="server">

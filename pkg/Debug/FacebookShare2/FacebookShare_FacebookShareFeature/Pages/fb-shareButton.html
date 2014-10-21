@@ -7,22 +7,22 @@
 <head>
     <meta charset="utf-8" />
     <title>Share on facebook</title>
-    <link rel="stylesheet" href="/FacebookShare/Styles/fb-styles.css">
+    <link rel="stylesheet" href="../Styles/fb-styles.css">
 </head>
 <body>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-    <script src="/FacebookShare/Scripts/fb-scripts.js"></script>
+    <script src="../Scripts/fb-scripts.js"></script>
     <script>
         /*
          *  When the message is received we open the popup window
          */
         window.addEventListener('message', function (e) {
             var textToShare = e.data;
-            var s_appId = FB_APPID.toString();
-            if (textToShare.substring(0, s_appId.length) !== s_appId) //Message begin with the APPID
+            var s_appName = APP_Name.toString();
+            if (textToShare.substring(0, s_appName.length) !== s_appName) //Message begin with the APPID
                 return;
 
-            textToShare = textToShare.substring(s_appId.length + 1);
+            textToShare = textToShare.substring(s_appName.length + 1);
             open_popupWindow(textToShare);
         }, false);
     </script>
