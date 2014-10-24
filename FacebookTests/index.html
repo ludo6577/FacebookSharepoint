@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+
+
+    <script>
+        /*
+         *  The Facebook App ID
+         */
+        var FB_APPID = 1498810143705898;
+        var accessToken;
+
+        /*
+         *	FACEBOOK Loading
+         */
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: FB_APPID,
+                fileUpload: true,
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.1' // use version 2.1
+            });
+
+            FB.Event.subscribe('auth.authResponseChange', function (response) {
+                if (response.status === 'connected') {
+                    accessToken = response.authResponse.accessToken;
+                    $(document).trigger('fbload');  //  <---- THIS RIGHT HERE TRIGGERS A CUSTOM EVENT CALLED 'fbload'
+                }
+                else
+                    $(document).trigger('fbunload');
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        
+
+
+        // The Topic pour envoyer les images:
+        // http://stackoverflow.com/questions/4999024/facebook-graph-api-upload-photo-using-javascript
+
+        $(document).ready(function(){
+            $("#myForm").submit(function (e) {
+                //Cancel the form post
+                e.preventDefault();
+
+                //Set the access token in the form
+                var accessTokenField = document.getElementById("access_token");
+                accessTokenField.value = accessToken;
+
+                var formElement = document.getElementById("myForm");
+                var formData = new FormData(formElement);
+
+                $.ajax({
+                    url: "https://graph.facebook.com/me/photos",
+                    data: formData,
+                    type: "POST",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        alert("Votre message a été partagé ! " + JSON.stringify(data));
+                    },
+                    error:function(shr,status,data){
+                        alert(JSON.stringify(shr));
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
+    <span class="fb-login-button" data-auto-logout-link="true" data-scope="publish_actions,manage_pages,user_photos" data-width="400" data-max-rows="1"></span>
+    
+    
+    <form id="myForm" enctype="multipart/form-data" action="https://graph-video.facebook.com/me/photos" method="POST">
+        <input type="hidden" id="access_token" name="access_token" value="" />
+        <input type="text" name="title" />
+        <input type="text" name="description" />
+        <input type="text" name="message" />
+        <input id="myFile "type="file" name="file" />
+        <button>Send</button>
+    </form> 
+
+</body>
+</html>

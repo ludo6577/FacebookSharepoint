@@ -16,8 +16,8 @@
     <ElementFile Location="Pages\ClientWebPart.aspx" />
     <ElementFile Location="Pages\FileProvisioning.aspx" />
     <ElementManifest Location="Pages\Elements.xml" />
-    <ElementFile Location="Pages\fb-share.html" />
-    <ElementFile Location="Pages\fb-shareButton.html" />
+    <ElementFile Location="Pages\shareDialog.html" />
+    <ElementFile Location="Pages\shareButton.html" />
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\fb-scripts.js" />
     <ElementFile Location="Styles\App.css" />

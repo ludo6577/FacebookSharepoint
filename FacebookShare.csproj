@@ -70,8 +70,8 @@
       <DependentUpon>FacebookShareFeature.feature</DependentUpon>
     </Content>
     <Content Include="Files\fb-masterScript.txt" />
-    <Content Include="Pages\fb-share.html" />
-    <Content Include="Pages\fb-shareButton.html" />
+    <Content Include="Pages\shareDialog.html" />
+    <Content Include="Pages\shareButton.html" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Styles\Elements.xml" />
     <Content Include="Files\fb-config.txt" />

@@ -3,7 +3,7 @@
   <Module Name="Pages">
     <File Path="Pages\ClientWebPart.aspx" Url="Pages/ClientWebPart.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\FileProvisioning.aspx" Url="Pages/FileProvisioning.aspx" ReplaceContent="TRUE" />
-    <File Path="Pages\fb-share.html" Url="Pages/fb-share.html" ReplaceContent="TRUE" />
-    <File Path="Pages\fb-shareButton.html" Url="Pages/fb-shareButton.html" ReplaceContent="TRUE" />
+    <File Path="Pages\shareDialog.html" Url="Pages/shareDialog.html" ReplaceContent="TRUE" />
+    <File Path="Pages\shareButton.html" Url="Pages/shareButton.html" ReplaceContent="TRUE" />
   </Module>
 </Elements>

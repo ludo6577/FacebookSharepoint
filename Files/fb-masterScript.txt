@@ -1,11 +1,13 @@
 ﻿var APP_Name = "FacebookShare";
 
+var context;
 var web;
+var site;
 var CurrentURL;
 
 
 /*
- *	Page Loading (Sharepoint only)
+ *	Page Loading (Sharepoint)
  */
 function runAfterEverythingElse() {
 	ExecuteOrDelayUntilScriptLoaded(loadConstants, "sp.js");
@@ -19,15 +21,15 @@ if (typeof _spBodyOnLoadFunctionNames !== 'undefined') {
  *  Initialise Sharepoint constants
  */
 function loadConstants() {
-	var context = new SP.ClientContext.get_current();
-	var site = context.get_site();
+	context = new SP.ClientContext.get_current();
+	site = context.get_site();
 	context.load(site);
 	web = context.get_web();
 	context.load(web);
 	context.executeQueryAsync(Function.createDelegate(this, this.onSuccess), Function.createDelegate(this, this.onFail));
 }
 function onSuccess(sender, args) {
-	CurrentURL = web.get_url();
+	CurrentURL = web.get_url() + "/";
 	modifyPage();
 }
 function onFail(sender, args) {
@@ -41,30 +43,39 @@ function onFail(sender, args) {
  */
 function modifyPage() {
     $('body').prepend("<div id='fb-root'></div>");
-    $(".ms-blog-commandSpace").each(function () {
-        $(this).append(getButton());
-    });
+    
+	$(".ms-blog-postList").children("li").each(function () {
+		var id = $(this).find(".ms-accentText").attr( "href").split( '?' )[1]; // Get the post ID
+		$(this).find(".ms-blog-commandSpace").append(getFrame(id));
+	});
+
+
+	//$(".ms-blog-commandSpace").each(function () {
+    //    $(this).append(getFrame());
+    //});
 }
 
 var position = 0;
-function getButton() {
-	var src = CurrentURL + "/" + APP_Name + "/Pages/fb-shareButton.html";
+function getFrame(postId) {
+	var src = CurrentURL + APP_Name + "/Pages/shareButton.html?" + postId + "&siteUrl=" + context.get_url();
 
     //Need an overlay for the onclick event
     return "<span style='width:82px;height:20px;position:absolute;float:left;'>" +
                 "<iframe id='iframeButton" + position + "' src='" + src + "' width='100%' height='100%' marginheight='0' frameborder='0' scrolling='no'></iframe>" +
-                "<div style='top:0;left:0;width:100%;height:100%;position:absolute;' onclick='buttonClicked(" + (position++) + ")'></div>" +
-            "</span>";
+				<!-- "<div style='top:0;left:0;width:100%;height:100%;position:absolute;' onclick='buttonClicked(" + (position++) + ")'></div>" + -->
+			"</span>";
 }
 
 
+/*
 function buttonClicked(buttonNumber) {
     var text = $("div.ms-blog-postBody").contents()[buttonNumber].innerText;
     if (typeof text === 'undefined')
         text = $("div.ms-blog-postBody").contents()[buttonNumber].textContent; //Firefox/Opera compatibility
 
     document.getElementById('iframeButton' + buttonNumber).contentWindow.postMessage(APP_Name + ":" + text, '*');
-}
+}*/
+
 
 function getRelativeUrl() {
     var absoluteUrl = document.URL;

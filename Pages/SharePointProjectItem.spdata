@@ -4,7 +4,7 @@
     <ProjectItemFile Source="ClientWebPart.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="FileProvisioning.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Elements.xml" Target="Pages\" Type="ElementManifest" />
-    <ProjectItemFile Source="fb-share.html" Target="Pages\" Type="ElementFile" />
-    <ProjectItemFile Source="fb-shareButton.html" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="shareDialog.html" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="shareButton.html" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

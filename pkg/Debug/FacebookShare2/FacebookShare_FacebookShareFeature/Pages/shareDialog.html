@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Share on Facebook</title>
+    <link rel="stylesheet" href="../Styles/fb-styles.css">
+</head>
+
+<body>
+    <!-- Facebook scripts -->
+    <div id="fb-root"></div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
+    <script src="../Scripts/fb-scripts.js"></script>
+
+    <script>
+        //Disable F5
+        $(document).on("keydown", function disableF5(e) {
+            if ((e.which || e.keyCode) == 116) e.preventDefault();
+        });
+        
+        $(document).ready(function () {
+            //Remove scroll bars
+            $("body").css("overflow", "hidden");
+
+            //Disable resizing
+            var size = [window.width, window.height];
+            $(window).resize(function () {
+                //window.resizeTo(size[0], size[1]);
+            });
+        });
+
+        /*
+         *  Set the text we want to share in the TextArea
+         */
+        function setTextValue(textToShare) {
+            document.getElementById("sharedContent").value = textToShare;
+        }
+
+        /*
+         * Add listener to fbload et fbunload
+         * Then add/remove items from option list
+         */
+		$(document).trigger('pageLoad');
+
+		//FBLOAD
+		$(document).on('fbload',
+            function () {
+                document.getElementById("selectPage").innerHTML = "";
+                FB.api("/me", processResponse);
+                FB.api("/me/accounts", processResponse);
+            }
+        );
+
+		//FBUNLOAD
+		$(document).on('fbunload',
+            function () {
+                document.getElementById("selectPage").innerHTML = "";
+                $("#ShareButton").hide();
+            }
+        );
+        
+        /*
+         *  When we get the user ID and the list pages IDs
+         */
+		function processResponse(response) {
+		    if (!response || response.error) {
+		        alert(JSON.stringify(response.error));
+		    } else {
+		        $("#ShareButton").show();
+		        if (response.data instanceof Array) {
+		            for (var item in response.data) {
+		                addSelectorOption(response.data[item]);
+		            }
+		        } else {
+		            addSelectorOption(response, 0);
+		        }		        
+		    }
+		}
+
+		/*
+         *  Add an option to the selector list: "page to share on" 
+         */
+		function addSelectorOption(value, position) {
+		    var option = document.createElement("option");
+		    option.value = value.id;
+		    option.text = value.name;
+		    document.getElementById("selectPage").add(option, position);
+		}
+
+
+
+		function fb_OnClick_postToFeed() {
+		    var message = $("#sharedContent").val();
+		    var link = $("#linkContent").val();
+		    var image = $("#imageContent")[0].files[0];
+		    var pageID = $("#selectPage").val();
+		    var selectedIndex = $("#selectPage option:selected").index();
+		    var isUserProfile = (selectedIndex == 0);
+
+		    postMessage(message, link, image, pageID, isUserProfile);
+		}
+
+    </script>
+
+    <div class="container">
+        <div class="clearfix _zpj">
+            <table class="uiGrid _51mz _zpl lfloat _ohe" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="_51mx">
+                        <td class="_51m-">
+                            <img src="../Images/fb-img.png" class="_3lu0 img sp_itTrYuXwPEW sx_c404ff"></img>
+                        </td>
+                        <td class="_51m- _51mw">
+                            <span class="_zpn fcw">Partager sur Facebook</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="loginButton">
+                <span class="fb-login-button" data-auto-logout-link="true" data-scope="publish_actions,manage_pages,user_photos" data-width="400" data-max-rows="1"></span>
+            </span>
+        </div>
+
+
+        <div class="selectorContainer">
+            Pages:
+            <select id="selectPage" class="selector"></select>
+        </div>
+
+        <div class="textAreaContainer">
+            <textarea id="sharedContent" class="textarea"></textarea>
+            Add a link:      <input id="linkContent" type="text" /><br/>
+            Upload an image: <input id="imageContent" type="file" name="file" /><br />
+
+            <div class="buttons">
+                <button class="buttonStyle" onclick="close_popupWindow(); return false;">Annuler</button>
+                <button id="ShareButton" class="buttonStyle right" onclick="fb_OnClick_postToFeed(); return false;" style="display: none;">Partager l'article</button>
+            </div>
+        </div>
+</div>
+</body>
+</html>
