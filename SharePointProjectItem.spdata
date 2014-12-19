@@ -2,5 +2,12 @@
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
+    <ProjectItemFile Source="HowTo\AddColumnPost01.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\AddColumnPost02.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\AddColumnPost03.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\AddColumnPost04.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\EditPage01.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\EditPage02.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\AddColumnPost05.PNG" Target="HowTo\" Type="ElementFile" />
   </Files>
 </ProjectItem>

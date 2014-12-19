@@ -14,6 +14,21 @@
     <script src="../Scripts/fb-scripts.js"></script>
 
     <script>
+        /*
+         *  Set the text and the picture we want to share in the TextArea
+         */
+        var canvas;
+        function setContent(textToShare, imageUrl, imgCanvas) {
+            document.getElementById("sharedContent").value = textToShare;
+            document.getElementById("imageContent").value = imageUrl;
+            canvas = imgCanvas;
+        }
+
+
+
+        /*
+         *  EVENTS
+         */
         //Disable F5
         $(document).on("keydown", function disableF5(e) {
             if ((e.which || e.keyCode) == 116) e.preventDefault();
@@ -24,24 +39,25 @@
             $("body").css("overflow", "hidden");
 
             //Disable resizing
-            var size = [window.width, window.height];
+            var size = [window.outerWidth, window.outerHeight];
             $(window).resize(function () {
-                //window.resizeTo(size[0], size[1]);
+                window.resizeTo(size[0], size[1]);
             });
         });
-
-        /*
-         *  Set the text we want to share in the TextArea
-         */
-        function setTextValue(textToShare) {
-            document.getElementById("sharedContent").value = textToShare;
-        }
 
         /*
          * Add listener to fbload et fbunload
          * Then add/remove items from option list
          */
 		$(document).trigger('pageLoad');
+
+		//FBUNLOAD
+		$(document).on('fbunload',
+            function () {
+                document.getElementById("selectPage").innerHTML = "";
+                $("#ShareButton").hide();
+            }
+        );
 
 		//FBLOAD
 		$(document).on('fbload',
@@ -51,18 +67,7 @@
                 FB.api("/me/accounts", processResponse);
             }
         );
-
-		//FBUNLOAD
-		$(document).on('fbunload',
-            function () {
-                document.getElementById("selectPage").innerHTML = "";
-                $("#ShareButton").hide();
-            }
-        );
-        
-        /*
-         *  When we get the user ID and the list pages IDs
-         */
+		// When we get the user ID and the list pages IDs
 		function processResponse(response) {
 		    if (!response || response.error) {
 		        alert(JSON.stringify(response.error));
@@ -74,13 +79,10 @@
 		            }
 		        } else {
 		            addSelectorOption(response, 0);
-		        }		        
+		        }
 		    }
 		}
-
-		/*
-         *  Add an option to the selector list: "page to share on" 
-         */
+		// Add an option to the selector list: "page to share on"
 		function addSelectorOption(value, position) {
 		    var option = document.createElement("option");
 		    option.value = value.id;
@@ -90,17 +92,80 @@
 
 
 
+        /*
+         *  On click in the Share button
+         */
+		var isSent = false;
 		function fb_OnClick_postToFeed() {
+		    if (isSent){
+		        return;
+		    }
+		    else {
+		        isSent = true;
+		        $("#ShareButton").attr('disabled', 'disabled');
+		    }
+
 		    var message = $("#sharedContent").val();
-		    var link = $("#linkContent").val();
-		    var image = $("#imageContent")[0].files[0];
+		    //var link = "";
+		    //if ($("input[name=radioButton]:checked").val() == 0)
+		    //    link = $("#linkContent").val();
+		    //else
+		    //var image = $("#imageContent")[0].files[0]; //Should be undefined if their is nothing
+		    var imageURL = $("#imageContent").val();
 		    var pageID = $("#selectPage").val();
 		    var selectedIndex = $("#selectPage option:selected").index();
 		    var isUserProfile = (selectedIndex == 0);
 
-		    postMessage(message, link, image, pageID, isUserProfile);
+		    if (canvas) {
+		        //getBase64Image(imageURL, function (image) {
+		        var xhr = new XMLHttpRequest();
+		        xhr.open('GET', canvas, true);
+		        xhr.responseType = 'arraybuffer'; // this will accept the response as an ArrayBuffer
+		        xhr.setRequestHeader("Content-type", "image/png");
+		        xhr.onload = function (buffer) {
+		            var arrayBuffer = xhr.response;
+		            var blob = new Blob([arrayBuffer]);
+		            postMessage(message, /*link,*/ blob, pageID, isUserProfile);
+		        };
+		        xhr.send();
+		        //});
+		    } else {
+		        postMessage(message, /*link,*/ undefined, pageID, isUserProfile);
+		    }
 		}
 
+		function getRelativeUrl() {
+		    var absoluteUrl = document.URL;
+		    absoluteUrl = absoluteUrl.replace('https://', '');
+		    var parts = absoluteUrl.split('/');
+		    var relativeUrl = '/';
+		    for (var i = 1; i < parts.length - 1; i++) {
+		        relativeUrl += parts[i] + '/';
+		    }
+		    return relativeUrl;
+		}
+
+        // On click on Cancel or after the content is Shared
+		function close_popupWindow() {
+		    window.self.opener = window.self;
+		    window.self.close();
+		}
+
+		//function getBase64Image(imgUrl, continueExecution) {
+		//    var canvas = document.createElement("canvas");
+		//    //var img = new Image();
+		//    var img = document.getElementById("preview1");
+		//    img.onload = function () {
+		//        canvas.width = img.width;
+		//        canvas.height = img.height;
+		//        var ctx = canvas.getContext("2d");
+		//        ctx.drawImage(img, 0, 0);
+		//        continueExecution(canvas.toDataURL("image/png"));
+		//    };
+        //    img.setAttribute('crossOrigin', 'anonymous');
+		//    img.src = imgUrl;
+		//    //return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+		//}
     </script>
 
     <div class="container">
@@ -130,9 +195,12 @@
 
         <div class="textAreaContainer">
             <textarea id="sharedContent" class="textarea"></textarea>
-            Add a link:      <input id="linkContent" type="text" /><br/>
-            Upload an image: <input id="imageContent" type="file" name="file" /><br />
-
+            <table>
+                <!--<tr><td>Add a link:</td><td><input id="linkContent" type="text" /></td></tr>
+                <tr><td><b>or</b></td></tr>
+                <tr><td>Upload an image:</td><td><input id="imageContent" type="file" name="file" /></td></tr>-->
+                <tr><td>Image:</td><td><input id="imageContent" type="text" disabled /></td></tr>
+            </table>
             <div class="buttons">
                 <button class="buttonStyle" onclick="close_popupWindow(); return false;">Annuler</button>
                 <button id="ShareButton" class="buttonStyle right" onclick="fb_OnClick_postToFeed(); return false;" style="display: none;">Partager l'article</button>

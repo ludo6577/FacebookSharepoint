@@ -1,6 +1,0 @@
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\bin\FacebookTests.dll.config
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\bin\FacebookTests.dll
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\bin\FacebookTests.pdb
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\obj\Debug\FacebookTests.csprojResolveAssemblyReference.cache
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\obj\Debug\FacebookTests.dll
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\FacebookTests\obj\Debug\FacebookTests.pdb

@@ -3,7 +3,6 @@
   <Files>
     <ProjectItemFile Source="fb-masterPage.txt" Target="Files\" Type="ElementFile" />
     <ProjectItemFile Source="Elements.xml" Target="Files\" Type="ElementManifest" />
-    <ProjectItemFile Source="fb-config.txt" Target="Files\" Type="ElementFile" />
     <ProjectItemFile Source="fb-masterScript.txt" Target="Files\" Type="ElementFile" />
   </Files>
 </ProjectItem>

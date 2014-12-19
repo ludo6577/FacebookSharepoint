@@ -110,7 +110,7 @@ height:30px;
 
 .textAreaContainer{
 width:99%;
-height:99%;
+height:90%;
 }
 
 .selector{
@@ -129,18 +129,23 @@ text-align: center;
 border: 1px solid;
 border-color: #d0d0d0 #d0d0d0 #d0d0d0;
 margin: 0px 7px;
-height:52%;
+height:60%;
 width: 98%;
+}
+
+#imageContent{
+    width: 350px;
 }
 
 .buttons{
 font-size: 12px;
 line-height: 26px;
-padding: 0 10px;
 font-weight: bold;
 float: right;
 display: block;
-padding: 10px 20px 0 0;
+padding: 0 10px 0 0;
+position: relative;
+bottom: 10px;
 }
 
 .buttonStyle {

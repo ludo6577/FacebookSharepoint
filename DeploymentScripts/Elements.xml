@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="DeploymentScripts">
-    <File Path="DeploymentScripts\App.js" Url="DeploymentScripts/App.js" ReplaceContent="TRUE" />
     <File Path="DeploymentScripts\COB_AppHelper.js" Url="DeploymentScripts/COB_AppHelper.js" ReplaceContent="TRUE" />
     <File Path="DeploymentScripts\FileProvisioning.js" Url="DeploymentScripts/FileProvisioning.js" ReplaceContent="TRUE" />
-    <File Path="DeploymentScripts\_references.js" Url="DeploymentScripts/_references.js" ReplaceContent="TRUE" />
 </Module>
 </Elements>

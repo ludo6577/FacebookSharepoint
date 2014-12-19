@@ -3,7 +3,7 @@
 window.COB = window.COB || {};
 window.COB.HostWebApp = function() {
 	
-    var hostWebUrl, appWebUrl, hostWebContext, errorOccured=false;		
+    var hostWebUrl, appWebUrl, hostWebContext, appWebContext, errorOccured=false;		
 		
 	/*
 	 *	Init hostWebUrl and hostWebContext
@@ -15,7 +15,8 @@ window.COB.HostWebApp = function() {
         var appWebUrlFromQS = $.getUrlVar("SPAppWebUrl");
         appWebUrl = (appWebUrlFromQS !== undefined) ? decodeURIComponent(appWebUrlFromQS) : undefined;
 		
-		hostWebContext = new SP.ClientContext(window.COB.appHelper.getRelativeUrlFromAbsolute(hostWebUrl));
+        hostWebContext = new SP.ClientContext(window.COB.appHelper.getRelativeUrlFromAbsolute(hostWebUrl));
+        appWebContext = new SP.ClientContext(window.COB.appHelper.getRelativeUrlFromAbsolute(appWebUrl));
     }
 
 	/*
@@ -71,30 +72,44 @@ window.COB.HostWebApp = function() {
 			});
     }
 
-    function createConfigFile(hostWebServerRelativeUrl, hostWebFileName) {
+    function createConfigFile(context, hostWebServerRelativeUrl, fileName, content) {
         var createInfo = new SP.FileCreationInformation();
         createInfo.set_content(new SP.Base64EncodedByteArray());
-        var contents = $("#AppID").val();
-        for (var i = 0; i < contents.length; i++) {
-            createInfo.get_content().append(contents.charCodeAt(i));
+        for (var i = 0; i < content.length; i++) {
+            createInfo.get_content().append(content.charCodeAt(i));
         }
         createInfo.set_overwrite(true);
-        createInfo.set_url(hostWebFileName);
-        var files = hostWebContext.get_web().getFolderByServerRelativeUrl(hostWebServerRelativeUrl).get_files();
-        hostWebContext.load(files);
+        createInfo.set_url(fileName);
+        var files = context.get_web().getFolderByServerRelativeUrl(hostWebServerRelativeUrl).get_files();
+        context.load(files);
         files.add(createInfo);
 
-        hostWebContext.executeQueryAsync(
+        context.executeQueryAsync(
             function onProvisionFileSuccess() {
-                $('#message').append('<br />File provisioned in host web successfully: ' + hostWebServerRelativeUrl + '/' + hostWebFileName);
+                $('#message').append('<br />File provisioned in app successfully: ' + hostWebServerRelativeUrl + '/' + fileName);
             },
             function onProvisionFileFail(sender, args) {
                 errorOccured = true;
-                alert('Failed to provision file into host web. Error:' + sender.statusCode);
+                alert('Failed to provision file into app. Error:' + sender.statusCode);
             });
     }
 
+    function ifValidAppId(continueFunction) {
+        var appId = $("#AppID").val();
+        var URL = "https://graph.facebook.com/" + appId;
 
+        var appIdPage = new XMLHttpRequest();
+        appIdPage.open("GET", URL, false);
+        appIdPage.onreadystatechange = function () {
+            if (appIdPage.readyState === 4 && (appIdPage.status === 200 || appIdPage.status == 0)) {
+                continueFunction();
+            }
+            else {
+                alert("Invalid AppID !")
+            }
+        }
+        appIdPage.send(null);
+    }
 
     /*
 	 * set master page on host web..
@@ -121,9 +136,14 @@ window.COB.HostWebApp = function() {
     return {
         execute: function () {
             init();
-            //createConfigFile(appWebUrl + '/Files', 'fb-config.txt');
-            readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterScript.txt', '_catalogs/masterpage', 'fb-masterScript.js');
-            readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterPage.txt', '_catalogs/masterpage', 'fb-masterPage.master', true);
+            ifValidAppId(function () {
+                createConfigFile(appWebContext, appWebUrl + '/Files', 'appId.txt', $("#AppID").val());
+                createConfigFile(appWebContext, appWebUrl + '/Files', 'listName.txt', $("#ListName").val());
+                createConfigFile(hostWebContext, '_catalogs/masterpage', 'listName.txt', $("#ListName").val());
+
+                readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterScript.txt', '_catalogs/masterpage', 'fb-masterScript.js');
+                //readFromAppWebAndProvisionToHost(appWebUrl + '/Files/fb-masterPage.txt', '_catalogs/masterpage', 'fb-masterPage.master', true);
+            });
         }
     }
 }();

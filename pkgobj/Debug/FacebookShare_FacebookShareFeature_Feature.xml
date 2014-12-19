@@ -1,29 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Title="FacebookShareFeature" Version="1.0.0.2">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="FacebookShareFeature" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Version="1.3.0.0">
   <ElementManifests>
-    <ElementFile Location="DeploymentScripts\App.js" />
     <ElementFile Location="DeploymentScripts\COB_AppHelper.js" />
     <ElementFile Location="DeploymentScripts\FileProvisioning.js" />
-    <ElementFile Location="DeploymentScripts\_references.js" />
     <ElementManifest Location="DeploymentScripts\Elements.xml" />
     <ElementFile Location="Files\fb-masterPage.txt" />
     <ElementManifest Location="Files\Elements.xml" />
-    <ElementFile Location="Files\fb-config.txt" />
     <ElementFile Location="Files\fb-masterScript.txt" />
     <ElementFile Location="Images\AppIcon.png" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\fb-img.png" />
-    <ElementFile Location="Pages\ClientWebPart.aspx" />
     <ElementFile Location="Pages\FileProvisioning.aspx" />
     <ElementManifest Location="Pages\Elements.xml" />
     <ElementFile Location="Pages\shareDialog.html" />
-    <ElementFile Location="Pages\shareButton.html" />
+    <ElementFile Location="Pages\shareButtonASP.aspx" />
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\fb-scripts.js" />
+    <ElementFile Location="Scripts\shareButton-script.js" />
     <ElementFile Location="Styles\App.css" />
     <ElementManifest Location="Styles\Elements.xml" />
     <ElementFile Location="Styles\fb-styles.css" />
     <ElementManifest Location="Elements.xml" />
+    <ElementFile Location="HowTo\AddColumnPost01.PNG" />
+    <ElementFile Location="HowTo\AddColumnPost02.PNG" />
+    <ElementFile Location="HowTo\AddColumnPost03.PNG" />
+    <ElementFile Location="HowTo\AddColumnPost04.PNG" />
+    <ElementFile Location="HowTo\EditPage01.PNG" />
+    <ElementFile Location="HowTo\EditPage02.PNG" />
+    <ElementFile Location="HowTo\AddColumnPost05.PNG" />
   </ElementManifests>
   <UpgradeActions>
     <VersionRange>

@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Pages">
-    <File Path="Pages\ClientWebPart.aspx" Url="Pages/ClientWebPart.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\FileProvisioning.aspx" Url="Pages/FileProvisioning.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\shareDialog.html" Url="Pages/shareDialog.html" ReplaceContent="TRUE" />
-    <File Path="Pages\shareButton.html" Url="Pages/shareButton.html" ReplaceContent="TRUE" />
+    <File Path="Pages\shareButtonASP.aspx" Url="Pages/shareButtonASP.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

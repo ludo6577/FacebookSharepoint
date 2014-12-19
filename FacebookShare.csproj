@@ -70,11 +70,18 @@
       <DependentUpon>FacebookShareFeature.feature</DependentUpon>
     </Content>
     <Content Include="Files\fb-masterScript.txt" />
+    <Content Include="HowTo\AddColumnPost01.PNG" />
+    <Content Include="HowTo\AddColumnPost02.PNG" />
+    <Content Include="HowTo\AddColumnPost03.PNG" />
+    <Content Include="HowTo\AddColumnPost04.PNG" />
+    <Content Include="HowTo\AddColumnPost05.PNG" />
+    <Content Include="HowTo\EditPage01.PNG" />
+    <Content Include="HowTo\EditPage02.PNG" />
+    <Content Include="Pages\shareButtonASP.aspx" />
     <Content Include="Pages\shareDialog.html" />
-    <Content Include="Pages\shareButton.html" />
     <Content Include="Scripts\Elements.xml" />
+    <Content Include="Scripts\shareButton-script.js" />
     <Content Include="Styles\Elements.xml" />
-    <Content Include="Files\fb-config.txt" />
     <Content Include="Files\Elements.xml" />
     <Content Include="Images\Elements.xml" />
     <Content Include="Pages\Elements.xml" />
@@ -89,12 +96,9 @@
     <Content Include="Images\AppIcon.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
-    <Content Include="Pages\ClientWebPart.aspx" />
     <Content Include="Pages\FileProvisioning.aspx" />
-    <Content Include="DeploymentScripts\App.js" />
     <Content Include="DeploymentScripts\COB_AppHelper.js" />
     <Content Include="DeploymentScripts\FileProvisioning.js" />
-    <Content Include="DeploymentScripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Package\Package.package">

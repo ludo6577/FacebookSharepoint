@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<WebPartPages:AllowFraming runat="server" />
+<!DOCTYPE html>
 <!-- 
     This page must be opened in an iframe ! 
     It only contain the Share button
@@ -12,23 +13,9 @@
 <body>
     <div id="fb-root"></div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-    <script src="../Scripts/fb-scripts.js"></script>
+    <script src="../Scripts/shareButton-script.js"></script>
 
-    <script>
-        /*
-         *  When the message is received we open the popup window
-         */
-        window.addEventListener('message', function (e) {
-            var textToShare = e.data;
-            var s_appName = APP_Name.toString();
-            if (textToShare.substring(0, s_appName.length) !== s_appName) //Message begin with the APPID
-                return;
-
-            textToShare = textToShare.substring(s_appName.length + 1);
-            open_popupWindow(textToShare);
-        }, false);
-    </script>
-    <span class='pluginButton' onclick="open_popupWindow('try it!');">
+    <span class='pluginButton' onclick="open_popupWindow();">
         <span class='pluginButtonContainer'>
             <span class='pluginButtonImage'>
                 <span class='pluginButtonIconPlaceholder'></span>
