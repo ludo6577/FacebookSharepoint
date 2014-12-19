@@ -1,6 +1,6 @@
 ﻿
 <!--Created:cbbc9d22-5cf7-4e4c-8ee9-42a772aae58a-->
-<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" ProductID="{6D1CB3E3-6C75-4FB3-81B8-33C88C5B9CD4}" Version="1.3.0.0" SharePointMinVersion="15.0.0.0" Name="FacebookShare">
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" ProductID="{6D1CB3E3-6C75-4FB3-81B8-33C88C5B9CD4}" Version="1.3.0.2" SharePointMinVersion="15.0.0.0" Name="FacebookShare">
   <Properties>
     <Title>FacebookShare</Title>
     <StartPage>~appWebUrl/Pages/FileProvisioning.aspx?{StandardTokens}</StartPage>

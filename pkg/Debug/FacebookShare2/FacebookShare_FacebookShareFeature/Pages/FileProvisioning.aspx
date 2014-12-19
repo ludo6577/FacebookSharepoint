@@ -51,8 +51,10 @@
     <h1>Fonctionnement:</h1><br />
         <h2>Entrez votre <b>AppID</b>:</h2><br />
         Créez une application Facebook et entrez votre <b>AppID</b> dans le champs ci dessus puis cliquez sur valider.<br />
-        Si aucune erreur n'apparait passez à l'étape suivante.
+        Si aucune erreur n'apparait passez à l'étape suivante.<br /><br />
 
+        <h2>Entrez le nom de la liste contenant les articles:</h2><br />
+        Entrez le nom de la liste contenant les billets du blog (par défaut en français cette liste s'appelle "Billets" et "Posts" en anglais)<br /><br />
 
         <h2>Ajout du script à votre blog:</h2><br />
         Une fois que vous avez validé votre application, rendez vous sur la page d'acceuil de votre blog.<br />
@@ -60,9 +62,13 @@
         <img src="../HowTo/EditPage01.PNG" /><br /><br /><br />
 
         Ensuite ajoutez le lien vers le script de l'application.<br />
-        <b>~site/_catalogs/masterPage/fb-masterScript.js</b><br />
-        De la façon suivante:<br /><br />
+        Cliquez ensuite sur <b>Edit Web Part</b> (<b>Modifier le composant web part</b>).<br />
         <img src="../HowTo/EditPage02.PNG" /><br /><br /><br />
+
+        Enfin ajouter le lien suivant:<br />
+        <b>~site/_catalogs/masterPage/fb-masterScript.js</b><br />
+        Dans le champs <b>Miscellaneous->JS Link</b> (<b>Divers->Lien JS</b>):<br /><br />
+        <img src="../HowTo/EditPage03.PNG" /><br /><br /><br />
 
         Répétez l'opération dans le billet du blog afin d'afficher le bouton dans chaque posts.<br /><br /><br />
 
@@ -81,7 +87,8 @@
         (Si la colonne ne porte pas ce nom le partage d'images sur Facebook sera impossible)<br /><br />
         <img src="../HowTo/AddColumnPost04.PNG" /><br /><br /><br />
 
-        Lorsque vous éditez vos billet de blog vous pouvez maintenant ajouter une image grâce au champ <b>Thumb</b><br /><br />
+        Lorsque vous éditez vos billet de blog vous pouvez maintenant ajouter une image grâce au champ <b>Thumb</b><br />
+        Les images doivent être stockés dans l'application <b>Pictures</b> (<b>Photos</b>)<br />
         <img src="../HowTo/AddColumnPost05.PNG" /><br /><br /><br />
 
 </asp:Content>

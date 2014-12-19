@@ -9,5 +9,6 @@
     <ProjectItemFile Source="HowTo\EditPage01.PNG" Target="HowTo\" Type="ElementFile" />
     <ProjectItemFile Source="HowTo\EditPage02.PNG" Target="HowTo\" Type="ElementFile" />
     <ProjectItemFile Source="HowTo\AddColumnPost05.PNG" Target="HowTo\" Type="ElementFile" />
+    <ProjectItemFile Source="HowTo\EditPage03.PNG" Target="HowTo\" Type="ElementFile" />
   </Files>
 </ProjectItem>

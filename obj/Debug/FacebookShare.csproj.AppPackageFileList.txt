@@ -1,1 +1,1 @@
-C:\DEV\PRO\FacebookSharepoint\bin\Debug\app.publish\1.3.0.0\FacebookShare.app
+C:\DEV\PRO\FacebookSharepoint\bin\Debug\app.publish\1.3.0.2\FacebookShare.app
