@@ -3,5 +3,6 @@
   <Module Name="Styles">
     <File Path="Scripts\fb-scripts.js" Url="Scripts/fb-scripts.js" ReplaceContent="TRUE" />
     <File Path="Scripts\shareButton-script.js" Url="Scripts/shareButton-script.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Base64Binary.js" Url="Scripts/Base64Binary.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

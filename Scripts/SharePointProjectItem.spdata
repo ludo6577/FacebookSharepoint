@@ -4,5 +4,6 @@
     <ProjectItemFile Source="Elements.xml" Target="Scripts\" Type="ElementManifest" />
     <ProjectItemFile Source="fb-scripts.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="shareButton-script.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Base64Binary.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

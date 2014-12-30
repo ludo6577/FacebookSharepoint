@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="FacebookShareFeature" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Version="1.3.0.2">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Title="FacebookShareFeature" Version="1.4.1.1">
   <ElementManifests>
     <ElementFile Location="DeploymentScripts\COB_AppHelper.js" />
     <ElementFile Location="DeploymentScripts\FileProvisioning.js" />
@@ -17,6 +17,7 @@
     <ElementManifest Location="Scripts\Elements.xml" />
     <ElementFile Location="Scripts\fb-scripts.js" />
     <ElementFile Location="Scripts\shareButton-script.js" />
+    <ElementFile Location="Scripts\Base64Binary.js" />
     <ElementFile Location="Styles\App.css" />
     <ElementManifest Location="Styles\Elements.xml" />
     <ElementFile Location="Styles\fb-styles.css" />

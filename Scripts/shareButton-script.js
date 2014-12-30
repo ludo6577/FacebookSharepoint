@@ -24,6 +24,9 @@ window.addEventListener('message', function (e) {
     if (textToShare.substring(0, s_appName.length) !== s_appName) //Message begin with the APPID
         return;
     canvas = textToShare.substring(s_appName.length + 1);
+
+    if (wnd != undefined && wnd != null) //Fenetre déja ouverte mais pas de canvas
+        wnd.canvas = canvas;
 }, false);
 
 

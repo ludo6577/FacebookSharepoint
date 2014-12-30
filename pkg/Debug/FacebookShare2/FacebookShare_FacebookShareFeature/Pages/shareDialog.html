@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Share on Facebook</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <link rel="stylesheet" href="../Styles/fb-styles.css">
 </head>
 
@@ -12,6 +13,7 @@
     <div id="fb-root"></div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
     <script src="../Scripts/fb-scripts.js"></script>
+    <script src="../Scripts/Base64Binary.js"></script>
 
     <script>
         /*
@@ -116,19 +118,24 @@
 		    var selectedIndex = $("#selectPage option:selected").index();
 		    var isUserProfile = (selectedIndex == 0);
 
-		    if (canvas) {
-		        //getBase64Image(imageURL, function (image) {
-		        var xhr = new XMLHttpRequest();
-		        xhr.open('GET', canvas, true);
-		        xhr.responseType = 'arraybuffer'; // this will accept the response as an ArrayBuffer
-		        xhr.setRequestHeader("Content-type", "image/png");
-		        xhr.onload = function (buffer) {
-		            var arrayBuffer = xhr.response;
-		            var blob = new Blob([arrayBuffer]);
-		            postMessage(message, /*link,*/ blob, pageID, isUserProfile);
-		        };
-		        xhr.send();
-		        //});
+		    if (imageURL!="undefined") { //On à une image
+		        var ite = 0;
+		        function waitForCanvas() {
+		            ite++;
+		            if (canvas) {       //Elle est deja en mémoire
+		                var encodedPng = canvas.substring(canvas.indexOf(',') + 1, canvas.length);
+		                var decodedPng = Base64Binary.decode(encodedPng);
+		                postMessage(message, /*link,*/ decodedPng, pageID, isUserProfile);
+		            }
+		            else if(ite<50){   //Sinon on attend 5s que fb-masterScript la charge en mémoire
+		                setTimeout(waitForCanvas, 100);
+		            }
+		            else {              //Enfin on post sans... tans pis
+		                postMessage(message, /*link,*/ undefined, pageID, isUserProfile);
+		            }
+		        }
+
+		        setTimeout(waitForCanvas, 100);
 		    } else {
 		        postMessage(message, /*link,*/ undefined, pageID, isUserProfile);
 		    }

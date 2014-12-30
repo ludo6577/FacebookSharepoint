@@ -1,9 +1,3 @@
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookShare2\FacebookShare2\bin\Debug\FacebookShare2.pdb
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookShare2\FacebookShare2\obj\Debug\FacebookShare2.dll
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookShare2\FacebookShare2\obj\Debug\FacebookShare2.pdb
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\bin\Debug\FacebookShare.pdb
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\obj\Debug\FacebookShare.dll
-C:\Users\lfe\Documents\Visual Studio 2013\Projects\FacebookSharepoint\obj\Debug\FacebookShare.pdb
 C:\DEV\PRO\FacebookSharepoint\bin\Debug\FacebookShare.pdb
 C:\DEV\PRO\FacebookSharepoint\obj\Debug\FacebookShare.dll
 C:\DEV\PRO\FacebookSharepoint\obj\Debug\FacebookShare.pdb

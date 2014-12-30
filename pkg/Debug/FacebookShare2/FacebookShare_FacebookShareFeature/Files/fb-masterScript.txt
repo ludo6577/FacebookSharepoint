@@ -15,12 +15,20 @@ var CurrentURL;
 /*
  *	Page Loading (Sharepoint)
  */
+ var runned = false;
 function runAfterEverythingElse() {
+	if(runned)
+		return;	
+	runned = true;
+
 	ExecuteOrDelayUntilScriptLoaded(loadConstants, "sp.js");
 }
 
 if (typeof _spBodyOnLoadFunctionNames !== 'undefined') {
     _spBodyOnLoadFunctionNames.push("runAfterEverythingElse"); //equivalent to JQuery: $(document).ready(function ()... but for Sharepoint
+}
+else{
+	runAfterEverythingElse();
 }
 
 /*

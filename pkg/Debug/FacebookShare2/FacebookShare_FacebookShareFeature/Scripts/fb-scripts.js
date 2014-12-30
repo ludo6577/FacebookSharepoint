@@ -111,29 +111,67 @@ function postMessage(messageToShare, /*linkToShare,*/ image, pageID, isUserProfi
         );
     }
     
+    // https://github.com/lukasz-madon/heroesgenerator/blob/master/script.js
 
-    function postImageToFeed(message, image, pageID, accessToken) {
-        var formData = new FormData();
-        formData.append("access_token", accessToken);
-        formData.append("message", message);
-        formData.append("file", image);
+    function postImageToFeed(message, imageData, pageID, authToken) {
+        // this is the multipart/form-data boundary we'll use
+        var boundary = '----ThisIsTheBoundary1234567890';
+        // let's encode our image file, which is contained in the var
+        var formData = '--' + boundary + '\r\n'
+        formData += 'Content-Disposition: form-data; name="source"; filename="imageSharepoint";\r\n';
+        formData += 'Content-Type: image/png\r\n\r\n';
+        for (var i = 0; i < imageData.length; ++i) {
+            formData += String.fromCharCode(imageData[i] & 0xff);
+        }
+        formData += '\r\n';
+        formData += '--' + boundary + '\r\n';
+        formData += 'Content-Disposition: form-data; name="message"\r\n\r\n';
+        formData += message + '\r\n'
+        formData += '--' + boundary + '--\r\n';
 
-        $.ajax({
-            url: "https://graph.facebook.com/" + pageID + "/photos",
-            data: formData,
-            type: "POST",
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                alert("Votre message a été partagé !");
-                close_popupWindow();
-            },
-            error: function (shr, status, data) {
-                alert(JSON.stringify(shr));
-            }
-        });
-    }
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://graph.facebook.com/' + pageID+ '/photos?access_token=' + authToken, true);
+        xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
+        var nBytes = formData.length;
+        var ui8Data = new Uint8Array(nBytes);
+        for (var nIdx = 0; nIdx < nBytes; nIdx++) {
+            ui8Data[nIdx] = formData.charCodeAt(nIdx) & 0xff;
+        }
+        xhr.onload = function (data) {
+            alert("Votre message a été partagé !");
+            close_popupWindow();
+        };
+        xhr.onerror = function (shr, status, data) {
+            alert(JSON.stringify(shr));
+        };
+        xhr.send(ui8Data);
+    };
+
+    /*
+     *  OLD one, Don't work for IE...
+     */
+    //function postImageToFeed(message, image, pageID, accessToken) {
+    //    var formData = new FormData();
+    //    formData.append("access_token", accessToken);
+    //    formData.append("message", message);
+    //    formData.append("file", image);
+
+    //    $.ajax({
+    //        url: "https://graph.facebook.com/" + pageID + "/photos",
+    //        data: formData,
+    //        type: "POST",
+    //        cache: false,
+    //        processData: false,
+    //        contentType: false,
+    //        success: function (data) {
+    //            alert("Votre message a été partagé !");
+    //            close_popupWindow();
+    //        },
+    //        error: function (shr, status, data) {
+    //            alert(JSON.stringify(shr));
+    //        }
+    //    });
+    //}
 }
 
 

@@ -80,6 +80,7 @@
     <Content Include="HowTo\EditPage03.PNG" />
     <Content Include="Pages\shareButtonASP.aspx" />
     <Content Include="Pages\shareDialog.html" />
+    <Content Include="Scripts\Base64Binary.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\shareButton-script.js" />
     <Content Include="Styles\Elements.xml" />
