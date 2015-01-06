@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Title="FacebookShareFeature" Version="1.4.1.1">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="4effcd49-8097-4226-bbfe-4d4ddce32f64" Scope="Web" Title="FacebookShareFeature" Version="1.4.1.9">
   <ElementManifests>
     <ElementFile Location="DeploymentScripts\COB_AppHelper.js" />
     <ElementFile Location="DeploymentScripts\FileProvisioning.js" />

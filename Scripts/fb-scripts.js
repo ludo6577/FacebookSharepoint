@@ -110,9 +110,9 @@ function postMessage(messageToShare, /*linkToShare,*/ image, pageID, isUserProfi
             }
         );
     }
+
     
     // https://github.com/lukasz-madon/heroesgenerator/blob/master/script.js
-
     function postImageToFeed(message, imageData, pageID, authToken) {
         // this is the multipart/form-data boundary we'll use
         var boundary = '----ThisIsTheBoundary1234567890';
@@ -126,6 +126,7 @@ function postMessage(messageToShare, /*linkToShare,*/ image, pageID, isUserProfi
         formData += '\r\n';
         formData += '--' + boundary + '\r\n';
         formData += 'Content-Disposition: form-data; name="message"\r\n\r\n';
+        message = unescape(encodeURIComponent(message)); //Utf16 to Utf8
         formData += message + '\r\n'
         formData += '--' + boundary + '--\r\n';
 
@@ -144,7 +145,7 @@ function postMessage(messageToShare, /*linkToShare,*/ image, pageID, isUserProfi
         xhr.onerror = function (shr, status, data) {
             alert(JSON.stringify(shr));
         };
-        xhr.send(ui8Data);
+        xhr.send(ui8Data.buffer);
     };
 
     /*
